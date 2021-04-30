@@ -1,5 +1,5 @@
 import { AfterContentChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {  FormGroup } from '@angular/forms';
+import {  FormGroup, NgForm } from '@angular/forms';
 import { Movie } from '../model/movie';
 
 @Component({
@@ -11,6 +11,7 @@ export class MovieComponent implements OnInit {
 
   @ViewChild('mForm', { static: true }) movieForm: FormGroup;
   movie: Movie = new Movie();
+  selectedCategory: boolean = false;
 
   constructor() {
 
@@ -19,8 +20,17 @@ export class MovieComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveMovie(): any {
+  saveMovie(form: NgForm): any {
+    console.log(form.value);
     return {};
+  }
+
+  selectedCat(event: Event) {
+    if ((event.target as HTMLInputElement).value !== '') {
+      this.selectedCategory = true;
+    } else {
+      this.selectedCategory = false;
+    }
   }
 
 }
