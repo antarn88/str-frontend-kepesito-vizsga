@@ -1,1 +1,6 @@
-.table-section {}
+@import './mixin';
+
+.table-section {
+  display: flex;
+  flex-direction: column;
+}
